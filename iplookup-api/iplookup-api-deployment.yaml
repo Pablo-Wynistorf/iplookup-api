@@ -19,7 +19,7 @@ spec:
         app.kubernetes.io/name: iplookup-api
     spec:
       containers:
-      - image: pablo06/ipaddress-api:latest
+      - image: pablo06/ipaddress-api:v1.0.0
         imagePullPolicy: Always
         name: raw-ip-onedns-ch
         ports:
