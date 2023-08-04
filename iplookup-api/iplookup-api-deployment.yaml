@@ -1,18 +1,22 @@
+apiVersion: v1
+kind: namespace
+metadata:
+  name: iplookup-api
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: xmemo-system
-  name: raw-ip-onedns-ch
+  namespace: iplookup-api
+  name: iplookup-api
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: raw-ip-onedns-ch
-  replicas: 1
+      app.kubernetes.io/name: iplookup-api
+  replicas: 5
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: raw-ip-onedns-ch
+        app.kubernetes.io/name: iplookup-api
     spec:
       containers:
       - image: pablo06/ipaddress-api:latest
@@ -24,8 +28,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: xmemo-system
-  name: raw-ip-onedns-ch-svc
+  namespace: iplookup-api
+  name: iplookup-api-svc
 spec:
   ports:
     - port: 80
@@ -33,21 +37,4 @@ spec:
       protocol: TCP
   type: ClusterIP
   selector:
-    app.kubernetes.io/name: raw-ip-onedns-ch
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: raw-ip-onedns-ch-route
-  namespace: xmemo-system
-spec:
-  entryPoints:
-    - websecure
-  routes:
-  - kind: Rule
-    match: Host(`raw-ip.onedns.ch`)
-    services:
-    - name: raw-ip-onedns-ch-svc
-      port: 80
-  tls:
-    secretName: certificate-secret
+    app.kubernetes.io/name: iplookup-api
