@@ -2,9 +2,6 @@ Hello! With this image you are able to host your own iplookup-api.
 With it you can get your own or other users public ip address.
 If you just want to use the api without running it your self, dial http://raw.ip.onedns.ch/ip
 
-But if you want to contribute in this projekt, feel free to do so. You will find everything you need in this Github repo:
-https://github.com/Pablo-Wynistorf/iplookup-api
-
 Currently it only supports ipv4, but in the near feature i will implement the option to also get ipv6 addresses.
 
 You can run the api using this command:
