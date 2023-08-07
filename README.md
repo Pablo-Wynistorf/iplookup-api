@@ -7,13 +7,13 @@ Currently it only supports ipv4, but in the near feature i will implement the op
 You can run the api using this command:
 
 ```
-docker run -itd --name iplookup-api -p 80:80 pablo06/iplookup-api:v1.0.1
+docker run -itd --name iplookup-api -p 80:80 --restart=always pablo06/iplookup-api:v1.0.1
 ```
 
 And if you want to run the api with a iplookup request log. Use this command:
 
 ```
-docker run -itd --name iplookup-api-log -p 80:80 -v /var/log/iplookup-api/:/app/log/ pablo06/iplookup-api:v1.0.1-log
+docker run -itd --name iplookup-api-log -p 80:80 -v /var/log/iplookup-api/:/app/log/ --restart=always pablo06/iplookup-api:v1.0.1-log
 ```
 
 
